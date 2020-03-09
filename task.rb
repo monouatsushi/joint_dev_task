@@ -2,10 +2,10 @@
 # 回答の出力を確認される際は，「ruby main.rb」をターミナルから実行して下さい。
 
 def q1
-  names = ["田中", "佐藤", "佐々木", "高橋", "斎藤"]
+  names = ["田中", "佐藤", "佐々木", "高橋"]
 
   # 以下に回答を記載
-  p names
+  p names.push("斎藤")
 
 end
 
@@ -31,7 +31,8 @@ def q4
   sports = ["サッカー", "フットサル", nil, "野球", "バスケ", nil, "バレー"]
 
   # 以下に回答を記載
-
+  sports.delete("nil")
+  puts sports
 end
 
 def q5
@@ -39,6 +40,8 @@ def q5
   array2 = [1, 5, 8, 10]
 
   # 以下に回答を記載
+  puts array1.empty?
+  puts array2.empty?
 
 end
 
