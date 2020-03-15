@@ -89,7 +89,7 @@ def q10
   if foods.include?("うに") 
     puts "好物です"
   else
-    p "まあまあ好きです"
+    puts "まぁまぁ好きです"
   end
 
 end
