@@ -115,13 +115,16 @@ def q13
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-
+  user_data1 = user_data.merge!(update_data)
+p user_data1
 end
 
 def q14
   data = { name: "satou", age: 33, address: "saitama", hobby: "soccer", email: "hoge@fuga.com" }
 
   # 以下に回答を記載
+
+p array = data.keys
 
 end
 
@@ -130,7 +133,10 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-
+  data = [data1, data2]
+  data.each.with_index(1) do |d,i|
+  puts d.key?(:age) ? "data#{i} OK":"data#{i} NG"
+  end
 end
 
 def q16
