@@ -115,8 +115,7 @@ def q13
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-  user_data1 = user_data.merge!(update_data)
-p user_data1
+p user_data1 = user_data.merge!(update_data)
 end
 
 def q14
@@ -148,12 +147,30 @@ def q16
   ]
 
   # 以下に回答を記載
+  users.each {|user|
+    p "私の名前は#{user[:name]}です。年齢は#{user[:age]}です"}
+    
 
-end
+  end
 
 class UserQ17
   # 以下に回答を記載
+  def initialize(**params)
+  @name = params[:name]
+  @age = params[:age]
+  @gender = params[:gender]
+  @admin = params[:admin]
+  end
 
+  def info
+    admin = @admin ? '有り' : '無し'
+    puts <<~"EOS"
+      名前:#{@name}
+      年齢:#{@age}
+      性別:#{@gender}
+      管理者権限:#{admin}
+    EOS
+  end
 end
 
 def q17
