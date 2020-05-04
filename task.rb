@@ -149,7 +149,6 @@ def q16
   # 以下に回答を記載
   users.each {|user|
     p "私の名前は#{user[:name]}です。年齢は#{user[:age]}です"}
-    
 
   end
 
@@ -185,7 +184,7 @@ end
 
 class UserQ18
   # 以下に回答を記載
-  def initialize(params)
+  def initialize(**params)
     @name = params[:name]
     @age  = params[:age]
   end
@@ -211,7 +210,7 @@ end
 
 class Item
   # 以下を修正して下さい
-  attr_accessor :name
+  attr_reader :name
   def initialize(name:)
     @name = name
   end
@@ -225,39 +224,41 @@ end
 
 class UserQ20
   # 以下に回答を記載
-  #Userクラスのインスタンスにageとnameという情報を持たせる
   attr_reader :name, :age
-  #initializeメソッドでインスタンス変数に引数の値を代入する
-  def initialize(name:, age:)
-  #インスタンス変数を初期化する
-  @name = name
-  @age = age
+  def initialize(**params)
+  @name = params[:name]
+  @age = params[:age]
   end
 
 end
 
 class Zoo
   # 以下に回答を記載
-  #initializeメソッドでインスタンス変数に引数の値を代入する
-  def initialize(name:, entry_fee:)
-      @entry_fee_infant = entry_fee[:infant]
-      @entry_fee_children = entry_fee[:children]
-      @entry_fee_adult = entry_fee[:adult] 
-      @entry_fee_senior = entry_fee[:senior] 
+  def initialize(**params)
+      # @entry_fee_infant = entry_fee[:infant]
+      # @entry_fee_children = entry_fee[:children]
+      # @entry_fee_adult = entry_fee[:adult] 
+      # @entry_fee_senior = entry_fee[:senior] 
+      @name = params[:name]
+      @entry_fee = params[:entry_fee]
   end
 
+#entry_feeに何度も代入しているので，
+#case文全体をentry_feeに代入するように改良すると簡潔に書くことができます。
+
 def info_entry_fee(user)
-  case user.age
-  when 0..5
-  entry_fee = @entry_fee_infant
-  when 6..12
-  entry_fee = @entry_fee_children
-  when 13..64
-  entry_fee = @entry_fee_adult
-  when 65..120
-  entry_fee = @entry_fee_senior
+  
+  price = case user.age
+  when 0 .. 5
+    @entry_fee[:infant]
+  when 6 .. 12
+    @entry_fee[:children]
+  when 13 .. 64
+    @entry_fee[:adult]
+  when 65 .. 120
+    @entry_fee[:senior]
   end
-  puts "#{user.name}さんの入場料金は#{entry_fee}円です。"
+  puts "#{user.name}さんの入場料金は#{price}円です。"
 end
 end
 
